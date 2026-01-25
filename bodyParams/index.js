@@ -9,6 +9,11 @@ app.get("/hello", (req, res) => {
 })
 
 
+// Query parameters
+app.post("/queryOne",(req,res)=>{
+    res.send(`name is ${req.body.name} and the id is ${req.query.id}`)
+})
+
 
 app.listen(3000,()=>{
     console.log("the the project is runing in port 3000")
