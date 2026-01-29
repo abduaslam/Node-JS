@@ -1,9 +1,10 @@
 import express from "express"
 import studentModels from "../models/studentModels.js"
 
-const data=req.body
+
 const studentDtata= async(req,res)=>{
     try {
+        const data=req.body
        const insertData=new studentModels({
         name:data.name,
         age:data.age,

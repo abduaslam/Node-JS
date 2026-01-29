@@ -1,7 +1,9 @@
 import express from "express"
-import {getName,createName} from "../controllers/conntrollerName.js"
+import {getName,createName,deleteName,updateName} from "../controllers/conntrollerName.js"
 const route =express.Router()
+route.delete("/:id",deleteName)
+route.put("/:id",updateName)
 route.get("/",getName)
-route.post("/",createName)
+route.post("/create",createName)
 
 export default route ;
