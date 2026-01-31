@@ -2,6 +2,7 @@
   "name": "practiceejs",
   "version": "1.0.0",
   "description": "",
+  "type": "module",
   "main": "index.js",
   "scripts": {
     "start": "dev index.js",
@@ -11,8 +12,15 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@tailwindcss/vite": "^4.1.18",
     "ejs": "^4.0.1",
     "express": "^5.2.1",
+    "mongoose": "^9.1.5",
     "nodemon": "^3.1.11"
+  },
+  "devDependencies": {
+    "autoprefixer": "^10.4.24",
+    "postcss": "^8.5.6",
+    "tailwindcss": "^4.1.18"
   }
 }
