@@ -1,6 +1,6 @@
-import mongoose, { Schema } from "mongoose"
+import mongoose from "mongoose"
 
-import mongoose, {Schema} from "mongoose"
+
 
 const studentSchema=new mongoose.Schema({
     name:{
