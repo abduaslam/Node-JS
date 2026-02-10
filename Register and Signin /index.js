@@ -3,6 +3,7 @@ import dotenv from "dotenv"
 import route from "./route/register.js"
 import mongoose from "mongoose"
 
+mongoose.set("strictQuery", false);
 mongoose.connect("mongodb://localhost:27017/Users")
 .then(()=>{
     console.log("The database is connected")
