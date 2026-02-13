@@ -3,5 +3,5 @@ import usersRg from "../controllars/register.js"
 
 const route =express.Router()
 
-route.post("/register",usersRg)
+route.post("/",usersRg)
 export default route

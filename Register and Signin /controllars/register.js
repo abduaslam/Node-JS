@@ -1,34 +1,35 @@
-import usersRg from "../models/register.js";
+import mongoose from "mongoose";
+import userschema from "../models/register.js"
+import express from "express"
 
-const Users = async (req, res) => {
-  const userdata = req.body;
-
+const addUsers=async (req,res)=>{
+  const data =req.body;
   try {
-    const check = await usersRg.findOne({ password: userdata.password });
-
-    if (check) {
-      return res.status(200).json({
-        message: "User already exists",
-      });
+    const checkUser=await userschema.findOne({email:data.email}) ;
+    if(checkUser){
+      res.status(400).json({
+        message:"user already exsit"
+      })
+   
     }
-
-    const newUser = new usersRg({
-      email: userdata.email,
-      password: userdata.password,
-    });
-
-    const result = await newUser.save();
-
-    res.status(200).json({
-      message: "User created successfully",
-      data: result,
-    });
-
+     else{
+      const newuser=await new userschema({
+        email:data.email,
+        password:data.password
+      })
+      const result= await newuser.save();
+      res.status(200).json({
+        message:"users registered secessufully",
+        data:result
+      })
+      }
   } catch (error) {
-    res.status(400).json({
-      error: error.message,
-    });
-  }
-};
+  console.error("User failed to register:", error);
+  res.status(500).json({
+    message: "Internal server error"
+  });
+}
+                                                                                                                                                                   
+}
 
-export default Users;
+export default addUsers

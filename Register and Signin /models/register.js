@@ -9,4 +9,4 @@ const userSchema=mongoose.Schema({
         required:true
     }
 })
-export default mongoose.model("userSignin",userSchema)
+export default mongoose.model("RegisterUsers",userSchema)
