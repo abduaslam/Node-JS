@@ -1,10 +1,15 @@
 import mongoose from "mongoose";
 import userschema from "../models/register.js"
 import express from "express"
+import bcrypt from "bcrypt"
+
+
 
 const addUsers=async (req,res)=>{
   const data =req.body;
   try {
+    const hashPassword=await bcrypt.hash(data.password,10);
+      data.password =hashPassword;
     const checkUser=await userschema.findOne({email:data.email}) ;
     if(checkUser){
       res.status(400).json({
@@ -12,7 +17,9 @@ const addUsers=async (req,res)=>{
       })
    
     }
+     
      else{
+      
       const newuser=await new userschema({
         email:data.email,
         password:data.password
@@ -29,7 +36,7 @@ const addUsers=async (req,res)=>{
     message: "Internal server error"
   });
 }
-                                                                                                                                                                   
+                                                                                                                                                          
 }
 
 export default addUsers
