@@ -2,8 +2,9 @@ import express from "express";
 import dotenv from "dotenv";
 import mongoose from "mongoose";
 import userRegister from "./route/register.js";
-
 dotenv.config();
+const PORT=process.env.PORT;
+
 
 const App = express();
 
@@ -14,7 +15,7 @@ App.use(express.json());
 mongoose.set("strictQuery", false);
 
 mongoose
-  .connect(process.env.MONGO_URI || "mongodb://localhost:27017/RegisterAndSignin")
+  .connect(process.env.DB_URL)
   .then(() => console.log("The database is connected"))
   .catch((err) => console.error(err));
 
@@ -27,6 +28,6 @@ App.get("/test", (req, res) => {
 App.use("/register", userRegister);
 
 // start server
-App.listen(4000, () => {
-  console.log("The server is running on port 4000");
+App.listen(PORT, () => {
+  console.log("The server is running on port ----");
 });
